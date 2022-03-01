@@ -1,0 +1,23 @@
+CPU-Control State Machine
+Inputs:
+	- Aktueller Zustand
+	- RAM output 4 Bit D3..0
+	- ALU Flags 4 Bit
+	- ALU Busy (BQ)
+	
+Outputs:
+	- Folgezustand
+	- Instruction Pointer R/W0
+	- Instruction Pointer Adder A1
+	- Instruction Pointer Adder A0
+	- Instruction Pointer CLR -> "Reset"
+	- Instruction Pointer MUX-8 (RAM output/jump oder increment von Adder)
+	- RAM R/W0
+	- RAM MUX-8 Address Input (RAM output oder IP)
+	- ALU AR/W0
+	- ALU BR/W0
+	- ALU Start (SD)
+	- ALU S2
+	- ALU S1
+	- ALU S0
+	- ALU RegA Input MUX-4 (RAM oder RegB)
