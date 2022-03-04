@@ -1,0 +1,22 @@
+0x00:	9 23 	-> MOV_RAMREG addr 23
+0x03:	A 		-> MOV_REGREG
+0x04:	9 22	-> MOV_RAMREG addr 22
+0x07:	A		-> MOV_REGREG
+0x08:	9 25 	-> MOV_RAMREG addr 25
+0x0B:	5		-> MUL
+0x0C:	9 24 	-> MOV_RAMREG addr 24
+0x10:	3		-> ADD
+0x11:   D 21 	-> JumpIfZero to addr 21
+0x14:	9 22	-> MOV_RAMREG addr 22
+0x17:	A		-> MOV_REGREG
+0x18:	9 23	-> MOV_RAMREG addr 23
+0x1B:	3		-> ADD
+0x1C:	8 22	-> MOV_REGRAM addr 22
+0x1F:	B		-> Jump to addr 04
+0x20: 	F		-> END
+0x21:	0		-> memory of variable "i"
+0x22:	1		-> memory of variable "one"
+0x23:	5		-> memory of variable "length"
+0x24:	F		-> memory of variable "minus1"
+
+happy times :)
