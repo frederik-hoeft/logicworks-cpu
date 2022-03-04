@@ -23,6 +23,7 @@
     length  DW  5  
     minus1    DW  -1
 
+; this is a simple for loop example. It *should* count from 0 to 5 and then exit :)
 .text:
     movxi one       ; initialize for loop incrementer
     swp
