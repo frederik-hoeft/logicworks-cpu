@@ -1,0 +1,2 @@
+TODO:
+- Inst Fetch MUST NOT access ALU flags :C

@@ -24,8 +24,12 @@
     length  DW  5  
     minus1    DW  -1
 
-; executable region
 ; this is a simple for loop example. It *should* count from 0 to 5 and then exit :)
+
+; for (int i = 0; i != 5; i++) 
+; { }
+
+; executable region
 .text:              ; main entry point
 label forLoop:      ; for-loop header 
     movxi i         ; load i
@@ -33,7 +37,7 @@ label forLoop:      ; for-loop header
     movxi minus1    
     mul
     movxi length
-    add             
+    add
     jz loopEnd      ; i == length yielded true -> break out of loop
     movxi i         ; i was < length -> increment i by 1
     swp
