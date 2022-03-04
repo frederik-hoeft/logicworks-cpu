@@ -28,6 +28,7 @@ internal class AssemblyStream
         {
             _stream.WriteByte((byte)('A' + n - 0xA));
         }
+        _stream.WriteByte((byte)'\n');
     }
 
     public void WriteByte(byte b)

@@ -17,29 +17,29 @@
 ; E		jo		= JumpIfOverflow
 ; F		ret 	= END
 
+; data region for global variables
 .data:
     i   DW  0
     one   DW  1
     length  DW  5  
     minus1    DW  -1
 
+; executable region
 ; this is a simple for loop example. It *should* count from 0 to 5 and then exit :)
-.text:
-    movxi one       ; initialize for loop incrementer
-    swp
-label forLoop:
+.text:              ; main entry point
+label forLoop:      ; for-loop header 
     movxi i         ; load i
-    swp             ; check if i == length
+    swp             ; check if i != length by subtracting and checking for 0
     movxi minus1    
     mul
     movxi length
     add             
-    jz loopEnd
-    movxi i         ; increment i by 1
+    jz loopEnd      ; i == length yielded true -> break out of loop
+    movxi i         ; i was < length -> increment i by 1
     swp
     movxi one
     add
-    movxo i
-    jmp forLoop     ; jump to for loop check :)
+    movxo i         ; store i
+    jmp forLoop     ; jump to for loop header :)
 label loopEnd:
     ret             ; return
