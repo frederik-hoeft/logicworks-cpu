@@ -67,7 +67,8 @@ internal static class StreamParser
 
     public static bool TryParseString(FileStream stream, out string? s)
     {
-        if (!TrySkipString(stream, out int skippedBytes))
+        TrySkipString(stream, out int skippedBytes);
+        if (skippedBytes == 0)
         {
             s = null;
             return false;

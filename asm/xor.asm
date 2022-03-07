@@ -2,7 +2,7 @@
 
 ; data region for global variables
 .data:
-    A   DW  0
+    A   DW  -1
     B   DW  -1
     C   DW  0
 

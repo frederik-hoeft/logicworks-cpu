@@ -1,0 +1,32 @@
+9 	movxi
+1	A
+D	
+2	not
+A	swp
+9 	movxi
+1	B
+E
+0	and
+8	movxo
+1	C
+F	
+9	movxi
+1	B
+E
+2	not
+A	swp
+9	movxi
+1	A
+D
+0	and
+A	swp
+9	movxi
+1	C
+F	
+1	or
+8	movxo
+1	C
+F
+0	
+F
+0

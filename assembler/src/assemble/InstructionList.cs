@@ -48,6 +48,7 @@ internal class InstructionList
                     _ => throw new InvalidDataException($"encountered unknown instruciton '{s}' on position {stream.Position - s?.Length}")
                 },
                 _ when char.IsWhiteSpace((char)c) => true,
+                -1 => false,
                 _ => throw new InvalidDataException($"Encountered unknown character '{(char)c}' at position {stream.Position}!")
             };
             if (instruction is not null)

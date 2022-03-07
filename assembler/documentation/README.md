@@ -28,15 +28,49 @@ BAM instruction | Raw hex value | Description | ES1 equivalent | Total raw CPI |
 `or` | `0x1` | Performs a logical OR operation with the contents of the accumulator register _A_ and the flag register _B_. The result will be stored in register _A_. Contents in register _B_ will be overridden with flags after the operations completes. | `OR`| `3` | `2` | ![or](/assets/or.png)
 `not` | `0x2` | Performs a logical NOT operation with the contents of the accumulator register _A_. The result will be stored in register _A_. Contents in register _B_ will be overridden with flags after the operations completes. | `NOT`| `3` | `2` | ![not](/assets/not.png)
 `add` | `0x3` | Performs an arithmetic addition with the contents of the accumulator register _A_ and the flag register _B_. The result will be stored in register _A_. Contents in register _B_ will be overridden with flags after the operations completes. | `ADD`| `3` | `2` | ![add](/assets/add.png)
-`rst` | `0x4` | Resets the instruction pointer to `0` and continues execution from the first instruction in the executable region of the program. It does however _not_ re-initialize any variables to their initial values. | `RESET` | `2` | `2` |
+`rst` | `0x4` | Resets the instruction pointer to `0` and continues execution from the first instruction in the executable region of the program. It does however _not_ re-initialize any variables to their initial values. | `RESET` | `2` | `2` | ![rst](/assets/rst.png)
 `mul` | `0x5` | Performs an arithmetic multiplication with the contents of the accumulator register _A_ and the flag register _B_. The result will be stored in register _A_ and _B_. The upper nibble will be stored in _A_ and the lower nibble in register _B_. | `MUL`| `3` | `2` | ![mul](/assets/mul.png)
 N/A | `0x6` | RESERVED | `RESERVED` | N/A | N/A | N/A
 N/A | `0x7` | RESERVED | `RESERVED` | N/A | N/A | N/A
-`movxo <variable>` | `0x8` | `movxo` stands for _"MOVe register to eXternal memory Out"_. The `movxo` instruction transfers data from the accumulator to external data memory. The external data memory must be specified by a variable declared in the data section. | `MOV_REGRAM` | `4` | `4` | 
-`movxi <variable>` | `0x9` | `movxi` stands for _"MOVe register from eXternal memory In"_. The `movxi` instruction transfers data from external data memory to the accumulator. The external data memory must be specified by a variable declared in the data section. | `MOV_RAMREG` | `4` | `4` |
-`swp` | `0xA` | `swp` or SWaP exchanges the content of the accumulator (register _A_) and the flag register (register _B_). | `MOV_REGREG` | `2` | `2` |
-`jmp <label>` | `0xB` | descr. | `Jump` | `4` | `4` |
-`jc <label>` | `0xC` | descr. | `JumpIfCarry` | `3.5` | `3.5` |
-`jz <label>` | `0xD` | descr. | `JumpIfZero` | `3.5` | `3.5` |
-`jo <label>` | `0xE` | descr. | `JumpIfOverflow` | `3.5` | `3.5` |
-`ret` | `0xF` | descr. | `END` | `2` | `2` |
+`movxo <variable>` | `0x8` | `movxo` stands for _"MOVe register to eXternal memory Out"_. The `movxo` instruction transfers data from the accumulator to external data memory. The external data memory must be specified by a variable declared in the data section. | `MOV_REGRAM` | `4` | `4` | ![mov](/assets/mov.png)
+`movxi <variable>` | `0x9` | `movxi` stands for _"MOVe register from eXternal memory In"_. The `movxi` instruction transfers data from external data memory to the accumulator. The external data memory must be specified by a variable declared in the data section. | `MOV_RAMREG` | `4` | `4` | ![mov](/assets/mov.png)
+`swp` | `0xA` | `swp` or SWaP exchanges the content of the accumulator (register _A_) and the flag register (register _B_). A NOP will be performed if an ALU operation is still doing it's write back. | `MOV_REGREG` | `2.5` | `2.5` | ![swp](/assets/swp.png)
+`jmp <label>` | `0xB` | Jumps to the specified _label_ and continues execution from there. | `Jump` | `4` | `4` | ![jmp](/assets/jmp-nocond.png)
+`jc <label>` | `0xC` | Jumps to the specified _label_ if the `Carry` flag is set (Bit 0 in register _B_) and continues execution from there. | `JumpIfCarry` | `3.5` | `3.5` | ![jmp](/assets/jmp.png)
+`jz <label>` | `0xD` | Jumps to the specified _label_ if the `Zero` flag is set (Bit 3 in register _B_) and continues execution from there. | `JumpIfZero` | `3.5` | `3.5` | ![jmp](/assets/jmp.png)
+`jo <label>` | `0xE` | Jumps to the specified _label_ if the `Overflow` flag is set (Bit 1 in register _B_) and continues execution from there. | `JumpIfOverflow` | `3.5` | `3.5` | ![jmp](/assets/jmp.png)
+`ret` | `0xF` | Returns from the program flow and stops processing instructions. | `END` | `2` | `2` | ![ret](/assets/ret.png)
+## Examples
+
+```asm
+; data region for global variables
+.data:
+    i   DW  0
+    one   DW  1
+    length  DW  5  
+    minus1    DW  -1
+
+; this is a simple for loop example. It will count from 0 to 5 and then exit :)
+
+; for (int i = 0; i != 5; i++) 
+; { }
+
+; executable region
+.text:              ; main entry point
+label forLoop:      ; for-loop header 
+    movxi i         ; load i
+    swp             ; check if i != length by subtracting and checking for 0
+    movxi minus1    
+    mul
+    movxi length
+    add
+    jz loopEnd      ; i == length yielded true -> break out of loop
+    movxi i         ; i was < length -> increment i by 1
+    swp
+    movxi one
+    add
+    movxo i         ; store i
+    jmp forLoop     ; jump to for loop header :)
+label loopEnd:
+    ret             ; return
+```
