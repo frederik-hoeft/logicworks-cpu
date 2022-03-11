@@ -1,0 +1,29 @@
+Yoyo, ich hab mir für die Klausuren kleine Code Examples und Erklärungen für die jeweiligen Themen gemacht. Ihr könnt die auch gerne nutzen (:
+(Ich dokumentiere hierfür extra auf Deutsch. Kann also sein, dass manchmal Formulierungen etc. schlecht sind)
+Vieles ist auch einfach in den Aufgabenlösungen enthalten. Falls die Cheatsheets also nicht gut genug sind, dann guckt einfach nochmal in meinen (oder anderen) Lösungen nach.
+
+Falls ihr Dinge aber gerne nochmal nachlesen wollt, dann guckt am besten einfach Online. Gute Quellen sind bspw. die Oracle Libs, W3Schools oder STO für Probleme, ansonsten gibt es noch das
+Skript von Herrn Köpp, da steht auch eine Menge drin. Das hier sind einzig kleine Code Beispiele, mit denen das ganze etwas anschaulicher gemacht werden soll.
+
+Alle Themen:
+    Pattern:
+        Factory                         (X)
+        Abstract Factory                ( )
+        Template                        (X)
+        Visitor                         (X)
+        Chain Of Responsibility (CoR)   ( )
+        Observer                        ( )
+        Facade                          ( )
+        Supervisor                      ( )
+        Pipes and Filters               ( )
+    Generics                            (X)
+    Lambda Expressions                  (X)
+    Optionals                           (X)
+    Streams                             (X)
+    Threads (Nebenläufigkeit basics)    (X)
+    Synchronized operations             (X)
+    Deadlock & Livelock                 (X)
+    Async                               ( )
+
+Höchstwahrscheinlich nicht enthalten:
+    Programmierregeln
