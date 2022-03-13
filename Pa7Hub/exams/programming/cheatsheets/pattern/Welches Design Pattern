@@ -1,0 +1,3 @@
+Die Frage "welches Design Pattern benutze ich" ist etwas schwer zu beantworten, weil es keine generelle "Regel" gibt, mit der man das erkennen kann. Normalerweise ist von Herrn Köpp
+direkt in der Aufgabenstellung angegeben, welches Design Pattern wir nutzen sollen. Ansonsten muss man einfach aus der Problemstellung heraus erkennen, welches Design Pattern da zu nutzen ist.
+Und das kann man leider besser, je mehr man die Design Pattern benutzt und Problemstellungen kennt. Am besten liest man sich einfach nochmal die jeweiligen use cases von den Pattern durch.

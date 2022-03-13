@@ -8,22 +8,22 @@ Skript von Herrn Köpp, da steht auch eine Menge drin. Das hier sind einzig klei
 Alle Themen:
     Pattern:
         Factory                         (X)
-        Abstract Factory                ( )
+        Abstract Factory                (X)
         Template                        (X)
         Visitor                         (X)
-        Chain Of Responsibility (CoR)   ( )
-        Observer                        ( )
-        Facade                          ( )
-        Supervisor                      ( )
-        Pipes and Filters               ( )
+        Chain Of Responsibility (CoR)   (X)
     Generics                            (X)
     Lambda Expressions                  (X)
     Optionals                           (X)
     Streams                             (X)
     Threads (Nebenläufigkeit basics)    (X)
+    Semaphores                          (X)
     Synchronized operations             (X)
     Deadlock & Livelock                 (X)
-    Async                               ( )
+    Pipelines                           (X)
+    Async Operations                    (X)
 
 Höchstwahrscheinlich nicht enthalten:
     Programmierregeln
+    Observer und Facade Pattern, da die im Skript mit kleinem Text erklärt wurden, ich gehe also nicht davon aus, dass die drankommen.
+    Bei Supervisor und Pipes and Filters habe ich ehrlich gesagt nichts zum implementieren gefunden, daher fehlen die hier auch. Da am besten auch nochmal im Skript nachlesen.
